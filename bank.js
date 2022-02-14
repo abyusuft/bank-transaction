@@ -1,7 +1,14 @@
 // Deposit Ammount Handler
 document.getElementById('deposit-button').addEventListener('click', function () {
+
+
     const depositInput = document.getElementById('deposit-input');
     const newDepositAmmount = depositInput.value;
+    if (newDepositAmmount <= 0) {
+        alert('you cant deposit less than 1$');
+        return;
+
+    }
     const depositField = document.getElementById('deposit');
 
     const previousDepositAmmount = depositField.innerText;
@@ -30,6 +37,13 @@ document.getElementById('deposit-button').addEventListener('click', function () 
 document.getElementById('withdrew-button').addEventListener('click', function () {
     const withdrewInput = document.getElementById('withdrew-input');
     const newWithdrewAmmount = withdrewInput.value;
+    if (newWithdrewAmmount <= 0) {
+        alert('you cant withdrew less than 1$');
+        return;
+
+    }
+
+
     const withdrewField = document.getElementById('withdrew');
 
     const previousWithdrewAmmount = withdrewField.innerText;
