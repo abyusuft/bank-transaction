@@ -49,6 +49,19 @@ document.getElementById('withdrew-button').addEventListener('click', function ()
     const previousWithdrewAmmount = withdrewField.innerText;
     const newWithdrewTotal = parseFloat(previousWithdrewAmmount) + parseFloat(newWithdrewAmmount);
 
+    // update balace 
+    const balanceTotal = document.getElementById('balance');
+    const balanceTotalText = balanceTotal.innerText;
+    const previousBalanceTotal = parseFloat(balanceTotalText);
+    const newBalanceTotal = previousBalanceTotal - parseFloat(newWithdrewAmmount);
+
+
+    if (previousBalanceTotal < newWithdrewAmmount) {
+        alert('You dont have sufficent Balance. Your Current Balance is : ' + previousBalanceTotal);
+        return;
+    }
+    balanceTotal.innerText = newBalanceTotal;
+
     withdrewField.innerText = newWithdrewTotal;
 
     // Transaction History Add 
@@ -59,10 +72,5 @@ document.getElementById('withdrew-button').addEventListener('click', function ()
     document.getElementById('item-list').appendChild(withdrewHistoryAdd);
     withdrewInput.value = 0;
 
-    // update balace 
-    const balanceTotal = document.getElementById('balance');
-    const balanceTotalText = balanceTotal.innerText;
-    const previousBalanceTotal = parseFloat(balanceTotalText);
-    const newBalanceTotal = previousBalanceTotal - parseFloat(newWithdrewAmmount);
-    balanceTotal.innerText = newBalanceTotal;
+
 })
